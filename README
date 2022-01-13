@@ -1,0 +1,103 @@
+        Tema 1
+
+    Nu am facut modificari la scheletul de cod, dar am adaugat functii noi si 
+m-am folosit de o variabila globala pentru a putea face o contorizare.
+    Voi explica funtiile pe rand, incepand cu main si respectand ordinea pre-
+zentata pe site-ul temei.
+
+
+    Functia main:
+
+    In main am alocat memorie pentru directorul home (radacina). I-am initiali-
+zat doar numele, ceilalti pointeri initializandu-i cu NULL. In bucla am facut 
+un if-ladder corespunzator oricarui tip de input posibil (fie ca sunt comenzi 
+relevante sau nu). Am impartit inputul in tokeni carora le-am copiat continutul
+(adica doar numele fisierelor/directoarelor, daca era cazul; comanda nu a fost
+esential de pastrat, avand nevoie de ea doar ca sa aflu ce functie trebuie ape-
+lata). 
+
+
+    Functia touch:
+
+    In touch am verificat mai intai daca exista deja un fisier cu acelasi nume.
+Daca da, functia afiseaza mesajul cerut, in caz contrar aloca memorie pentru o
+noua structura de tipul file si o adauga la lista de fisiere a directorului cu-
+rent.
+
+
+    Functia mkdir:
+
+    In mkdir am verificat mai intai daca exista deja un director cu acelasi 
+nume. Daca da, functia afiseaza mesajul cerut, in caz contrar aloca memorie 
+pentru o noua structura de tipul file si o adauga la lista de fisiere a 
+directorului curent.
+
+
+    Functia ls:
+    
+    In ls am initializat niste pointeri auxiliari pentru fiecare lista si le-am
+parcurs pe rand, afisand de fiecare data numele.
+
+    
+
+    Functia rm:
+
+    In functia rm am verificat prima data daca exista fisierul care se cere a 
+fi eliminat. Daca da, am eliminat elementul din lista si l-am eliberat,
+pastrand ordinea elementelor din lista.
+
+
+    Functia rmdir:
+    
+    In functia rmdir am verificat prima data daca exista directorul care se ce-
+re a fi eliminat. Daca da, apelez functia recursiva free_dirs care are rolul de
+a elimina recursiv tot continutul acelui director, fie ca sunt fisiere sau di-
+rectoare. Mai apoi am eliberat si directorul in sine, pastrand ordinea elemen-
+telor din lista.
+
+
+    Functia cd:
+
+    Pentru functia cd, am avut nevoie de un pointer care sa imi arate in ce di-
+rector ma aflu ("current_dir") caruia sa ii pot schimba adresa catre care el 
+pointeaza. In cazul in care directorul este gasit, se salveaza adresa acestuia
+si se reactualizeaza pozitia curenta. Initial, directorul curent este home 
+(root), de la care se pleaca mai departe.
+
+
+    Functia tree:
+
+    Pentru functia tree, am facut o functie recursiva care sa afiseze pentru
+fiecare nivel numarul cerut de spatii, alaturi de directoarele de pe acel nivel
+si fisierele respective. Functia face recursivitatea doar in interiorul direc-
+toarelor, fisierele fiind printate ca atare.
+
+
+    Functia pwd:
+    
+    Pentru functia pwd, am alocat memorie pentru stringul ce avea sa fie retur-
+nat in urma apelului functiei, pe care am eliberat-o dupa ce am afisat-o. In 
+cadrul acestei functii m-am folosit de un pointer la int pentru a putea
+adauga cu usurinta in "output" caracterele necesare, fara a le suprascrie, cu
+ajutorul functiei "sprintf" si pentru a usura recursivitatea.
+
+
+    Functia stop:
+
+    Pentru functia stop, aceasta primeste intodeauna ca argument adresa catre
+directorul home, caruia ii elibereaza mai intai directoarele si fisierele si 
+mai apoi pe el.
+
+
+    Functia mv:
+
+    Pentru functia mv, caut sa vad daca exista un director/fisier cu numele
+respectiv. Daca gasesc ceva, schimb ori variabila dir (daca am gasit un 
+director cu numele respectiv) ori varibila file (daca am gasit un fisier cu 
+numele respectiv) la valoarea 1 (ambele erau initial 0, am presupus ca din 
+start nu exista un astfel de fiser). Mai apoi, caut sa vad daca noul nume apar-
+tine deja altui director/fisier. In cazul in care nu, daca e fisier il sterg 
+din lista de fisiere si il creez din nou in lista (ma folosesc de functiile rm 
+si touch), iar in cazul in care este un director, salvez listele de subdirec-
+toare si de fisiere, sterg directorul si il creez din nou in lista (ma folosesc
+de functiile rmdir si mkdir), dupa care ii refac legaturile cu listele lui.
