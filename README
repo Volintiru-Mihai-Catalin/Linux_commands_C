@@ -101,3 +101,4 @@ din lista de fisiere si il creez din nou in lista (ma folosesc de functiile rm
 si touch), iar in cazul in care este un director, salvez listele de subdirec-
 toare si de fisiere, sterg directorul si il creez din nou in lista (ma folosesc
 de functiile rmdir si mkdir), dupa care ii refac legaturile cu listele lui.
+
